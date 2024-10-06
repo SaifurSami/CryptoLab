@@ -15,6 +15,42 @@ using namespace std;
     
 // }
 
+ll findD(ll e,ll phi) {
+    ll temp = 1;
+    ll cnt = 1;
+    while(true) {
+        temp = phi*cnt;
+        temp++;
+        if(temp%e==0)
+            return temp/e;
+        
+        cnt++;
+    }
+    return -1;
+}
+/*int gcd(int a, int b) {
+    if (b == 0) return a;
+    return gcd(b, a % b);
+}
+
+long long modInverse(long long a, long long m) {
+    a = a % m;
+    for (int x = 1; x < m; x++) {
+        if ((a * x) % m == 1) return x;
+    }
+    return -1;
+}
+
+void generateKeys(int& n, int& e, int& d, int p, int q) {
+    n = p * q;
+    int phi = (p - 1) * (q - 1);
+    e = 2;
+    while (e < phi) {
+        if (gcd(e, phi) == 1) break;
+        e++;
+    }
+    d = modInverse(e, phi);
+}*/
 
 //By the Method of Exponential Squaring (O(log Exp))
 ll modExp(ll mes,ll exp,ll n) {
@@ -33,8 +69,8 @@ ll modExp(ll mes,ll exp,ll n) {
 }
 
 int main() {
-    freopen("input.txt","r",stdin);
-    // freopen("output.txt","w",stdout);
+    freopen("rsa1.txt","r",stdin);
+    // freopen("rsa2.txt","w",stdout);
     // cout<<"hello"<<ln;
     string m;
     ll e,d,n;
@@ -78,4 +114,9 @@ int main() {
     cout<<ln<<"Altogether The Decrypted Message : ";
     for(auto m:chunkD)
         cout<<m;
+
+
+    // ll dd = findD(79,3220);
+    // cout<<ln<<"d = "<<dd;
+
 }
